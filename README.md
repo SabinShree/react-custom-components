@@ -1,68 +1,209 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-custom-components
 
-## Available Scripts
+Those are the bunch of modular components which i made to use it frequently.Those modular component are not maintained. But i try to update it in near future. :) 
+## Installation
+Copy the file directly to your project and use it accordingly.
 
-In the project directory, you can run:
+## description
 
-### `yarn start`
+1. Button : modular button which can be configured automatically. (see the props type)
+2. DesignTable : A modular table which is build on top of react-table-v6. See the example.
+```javascript 1.8
+<CustomTable
+            tableOption={{
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+                tableData: userList, // table data
+                link: "www.example.json" // can fetch the data and form the table. 
+                titleWithTableInfo: "Total users : ", // title info
+                HeaderToLeft: true, // header direction
+                tableRowRemove: ["contactNumber", "password", "employmentStartDate", "employeeType"], // table row to remove
+                hideColumn: [ "designation", "id", "email",], // hide from table.
+                  styleCellConditionally: { // can color row condtionally. 
+                                           password: {
+                                               condition: (row) => {
+                                                   console.log("the row is ", row);
+                                                   if (row.password > 100) {
+                                                       console.log(row.chg);
+                                                       return {
+                                                           style: {
+                                                               color: "red",
+                                                               backgroundColor: "white",
+                                                           },
+                                                       };
+                                                   } else {
+                                                       return {
+                                                           style: {
+                                                               color: "green",
+                                                               backgroundColor: "white",
+                                                           },
+                                                       };
+                                                   }
+                                               },
+                                           },
+                                           contactNumber: {
+                                               condition: (row) => {
+                                                   console.log("the row is ", row);
+                                                   if (row.contactNumber.startsWith("-")) {
+                                                       return {
+                                                           style: {
+                                                               color: "red",
+                                                               backgroundColor: "white",
+                                                           },
+                                                       };
+                                                   } else {
+                                                       return {
+                                                           style: {
+                                                               color: "green",
+                                                               backgroundColor: "white",
+                                                           },
+                                                       };
+                                                   }
+                                               },
+                                           },
+                                       },
+                addDeleteButtonToRow: { // can be used button in react. //  (not good tho)
+                    buttonName: "",
+                    Header: "",
+                    deleteRow: true,
+                    accessor: "remove",
+                    style: {
+                        marginRight: "0",
+                        padding: "2px 15px",
+                        outline: "none",
+                        display: "block",
+                        marginLeft: "auto",
+                        borderRadius: "5px",
+                        border: "none",
+                        backgroundColor: "#F3F7FA",
+                        color: "white"
+                    },
+                    tableRowValue: row => {
+                        this.setState({userIdForDelete: row.uid, showDeleteModal: true});
+                    }
+                },
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+                addUserEditButtonToRow: {
+                    buttonName: "",
+                    Header: "",
+                    editUserRow: true,
+                    accessor: "edit",
+                    style: {
+                        marginRight: "0",
+                        padding: "2px 15px",
+                        outline: "none",
+                        display: "block",
+                        marginLeft: "auto",
+                        borderRadius: "5px",
+                        border: "none",
+                        backgroundColor: "#F3F7FA",
+                        color: "white"
+                    },
+                    tableRowValue: row => {
+                        console.log(row) // return the row value 
+                    }
+                },
 
-### `yarn test`
+                addEditButtonToRow: {
+                    buttonName: "",
+                    Header: "",
+                    accessor: "remove",
+                    editRow: true,
+                    style: {
+                        marginRight: "0em",
+                        padding: "2px 15px",
+                        outline: "none",
+                        borderRadius: "5px",
+                        border: "none",
+                        backgroundColor: "#F3F7FA",
+                        color: "red"
+                    },
+                    tableRowValue: row => {
+                     console.log(row) // return the row value 
+                    }
+                }
+            }}
+            dropdownOption={{
+                show: true // false to hide the dropdown menu. 
+            }}
+        />
+```
+![custom table ](./readmeImg/11111.PNG?raw=true "Title")
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. CrudOperation : We can use make generic CRUD  with validation too without writing code.  
+```javascript
+ <CrudOperation table={{
+                    title: "Billing Rates",
+                    tableData: this.state.tableData,
+                    tableRowRemove: ["id"]
+                }}
+                               onDelete={{
+                                   link: "http://localhost:8081",
+                                   selectedId: "serviceName",
+                                   buttonName: "Delete"
+                               }}
+                               addButtonName={"Add New Rates"}
+                               onUpdate={(updatedData) => {
+                                   Emitter.emit("UPDATE_VALUE", value => console.log(value));
+                               }}
+                               onAdd={(formData) => {
+                                   console.log(formData);
+                                   // Emitter.on("ADD_VALUE", value => console.log(value));
+                               }}
+                               structure={[
+                                   {
+                                       type: "select",
+                                       value: "",
+                                       inputLabelName: "serviceName",
+                                       rules: [{
+                                           required: true,
+                                           message: "Please input the Service Name!"
+                                       }],
+                                       optionList: serviceName,
+                                       placeHolder: "Enter the Service Name "
 
-### `yarn build`
+                                   },
+                                   // {
+                                   //     type: "password",
+                                   //     value: "",
+                                   //     inputLabelName: "password",
+                                   //     rules: [{
+                                   //         required: true,
+                                   //         message: "Please input the password bro!"
+                                   //     }]
+                                   //
+                                   // },
+                                   {
+                                       type: "select",
+                                       value: "",
+                                       placeHolder: "Select the fiscal Year",
+                                       inputLabelName: "serviceYear",
+                                       rules: [{
+                                           required: true,
+                                           message: "Please select the option from here!"
+                                       }],
+                                       optionList: fiscalYearForForm
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+                                   },
+                                   {
+                                       type: "number",
+                                       value: "",
+                                       inputLabelName: "rate",
+                                       rules: [{
+                                           required: true,
+                                           message: "Please input Number !"
+                                       }]
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+                                   }
+                               ]}
+                />
+```
+4. HOC : HOC componets which show loading spinner while  fetching the data.
+5. MyCustomFileUploader: File uploader.
+```javascript 1.5
+<MyCustomUploader header="Select Logo here "
+                                  accept="image/x-png,image/gif,image/jpeg" buttonName="Upload Logo"
+                                  mutedText="Only Image File Here." url={urlStatement}
+                                  method="POST"/>
+```
+## Contributing
+Not maintained. 

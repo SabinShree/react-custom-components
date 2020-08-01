@@ -1,0 +1,49 @@
+.titleWithTableDiv {
+    display: inline-block;
+    margin: 1em 1em 1em 0.5em
+}
+
+.titleWithTableDiv .HeaderTitle {
+    font-size: 1.2em;
+    color: #5843F8;
+    margin: 0 0.4em 0 0;
+    float: left;
+}
+
+.titleWithTableDiv .TableLengthInfo {
+    background-color: #FF5676;
+    font-size: 1em;
+    margin: 0.2em 0 0;
+    color: white;
+    border-radius: 1.5em;
+    padding: 0 1em 0 1em;
+    float: left;
+    text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+    .titleWithTableDiv .HeaderTitle {
+        font-size: 1em;
+        display: block;
+        margin: 0 0.5em 0 0;
+
+    }
+
+    .titleWithTableDiv .TableLengthInfo {
+        font-size: 0.9em;
+        margin-bottom: 0.5em;
+    }
+}
+
+@media screen and (max-width: 477px) {
+    .titleWithTableDiv .TableLengthInfo, .titleWithTableDiv .HeaderTitle {
+        position: relative;
+        display: block;
+        font-size: 0.8em;
+    }
+
+    .titleWithTableDiv .TableLengthInfo {
+        top: -0.3em
+    }
+
+}

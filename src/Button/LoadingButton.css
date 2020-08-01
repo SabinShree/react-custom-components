@@ -1,0 +1,28 @@
+
+.LoadingButton {
+    outline: none;
+    background-color: #5843F8;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    margin-top: 0.5em;
+    border-radius: 5px;
+}
+
+.LoadingButton:disabled,
+.LoadingButton[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+@media only screen and (max-width: 600px) {
+    .LoadingButton {
+        font-size: 0.8em;
+        padding: 4px 10px;
+        margin-top: 0.3em;
+
+
+    }
+}

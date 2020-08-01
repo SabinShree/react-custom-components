@@ -1,0 +1,83 @@
+.dropDownDiv .btn, .dropDownDiv .btn-primary {
+    background-color: white;
+    color: #5843F8;
+    font-size: 1em;
+    border: none;
+    box-shadow: none !important;
+    position: relative;
+}
+
+.dropDownDiv .btn-primary:hover, .dropDownDiv .btn-primary:active {
+    background-color: #5843F8 !important;
+    color: white !important;
+}
+
+.dropDownDiv .btn:active:focus {
+    background-color: white;
+    color: #5843F8;
+}
+
+.dropDownDiv .btn:active {
+    background-color: white;
+    color: #5843F8;
+    border: none;
+}
+
+.dropDownDiv .dropdown .nav-link {
+    color: #5843F8;
+    text-decoration: none;
+}
+
+.dropDownDiv .dropdown .dropdown-menu a {
+    color: #5843F8;
+    text-decoration: none;
+}
+
+.dropDownDiv .dropdown-menu {
+    color: black;
+}
+
+.dropDownDiv .dropdown .dropdown-menu a:active, .dropdown .dropdown-menu a:hover {
+    color: white;
+    background-color: #5843F8;
+}
+
+/*.dropdown .btn:hover {*/
+/*    background: #5843F8;*/
+/*    color: white;*/
+/*}*/
+
+.dropDownDiv .dropdown .btn:active {
+    color: #5843F8;
+    background: white;
+}
+
+.dropDownDiv .dropdown .btn:focus {
+    color: #5843F8;
+    background-color: white;
+    border: none;
+}
+
+.dropDownDiv .dropdown .btn:active {
+    color: #5843F8;
+    background-color: white;
+}
+
+.dropDownDiv .dropdown-menu {
+    min-width: 30px !important;
+    padding: 0;
+    margin: 0;
+    margin-left: -18px;
+}
+
+.dropDownDiv .dropdown-menu > li {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+.bottomRight {
+    position: absolute;
+    right: 0;
+    margin-right: 2em;
+    margin-top: 0.3em;
+}

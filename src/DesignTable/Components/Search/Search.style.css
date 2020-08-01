@@ -1,0 +1,50 @@
+.searchTable {
+    width: 15em;
+    font-size: 0.9em;
+    border-radius: 30px;
+    border-color: gray;
+    border-style: solid;
+    padding: 0.2em 0 0.2em 1em;
+    margin: 0 2em 0 0.3em;
+    border-width: thin;
+}
+
+.searchTable:focus {
+    outline: none;
+}
+
+.searchDiv {
+    float: left;
+    margin-top: 4px;
+    position: absolute;
+    right: 0
+}
+
+@media screen and (max-width: 820px ) {
+    .searchIcon {
+        display: none;
+    }
+    .searchDiv {
+        float: none;
+        position: relative;
+        bottom: 0;
+        left: 0;
+        font-size: 0.9em;
+        margin: 2em 0 0 0;
+    }
+}
+@media screen and (max-width: 477px ) {
+    .searchDiv {
+        float: none;
+        position: relative;
+        clear: both;
+    }
+    .searchIcon {
+        display: none;
+    }
+    .searchTable {
+        font-size: 0.8em;
+        padding: 1px;
+        width: 14.5em;
+    }
+}
