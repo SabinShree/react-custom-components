@@ -78,7 +78,7 @@ Copy the file directly to your project and use it accordingly.
                         color: "white"
                     },
                     tableRowValue: row => {
-                        this.setState({userIdForDelete: row.uid, showDeleteModal: true});
+                                            console.log(row) // return the row value 
                     }
                 },
 
@@ -129,7 +129,7 @@ Copy the file directly to your project and use it accordingly.
 ```
 ![custom table ](./readmeImg/11111.PNG?raw=true "Title")
 
-3. CrudOperation : We can use make generic CRUD  with validation too without writing code.  
+3. CrudOperation : We can use make generic CRUD  with validation too without writing much code.  
 ```javascript
  <CrudOperation table={{
                     title: "Billing Rates",
