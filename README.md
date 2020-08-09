@@ -6,14 +6,15 @@ Copy the file directly to your project and use it accordingly.
 
 ## description
 
-1. Button : modular button which can be configured automatically. (see the props type)
+1. Button : modular button which can be configured as per need. (see the props type)
 2. DesignTable : A modular table which is build on top of react-table-v6. See the example.
 ```javascript 1.8
 <CustomTable
             tableOption={{
 
                 tableData: userList, // table data
-                link: "www.example.json" // can fetch the data and form the table. 
+                link: "www.example.json" // can fetch the data and form the table from the fetched Data. 
+               // either use tableData or link. 
                 titleWithTableInfo: "Total users : ", // title info
                 HeaderToLeft: true, // header direction
                 tableRowRemove: ["contactNumber", "password", "employmentStartDate", "employeeType"], // table row to remove
