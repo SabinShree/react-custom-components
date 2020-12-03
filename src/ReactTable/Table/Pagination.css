@@ -1,0 +1,31 @@
+.Table__itemCount {
+    /* margin-top: 10px; */
+    font-size: 14px;
+}
+
+.Table__pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 10px;
+}
+
+.Table__pageButton {
+    font-size: 15px;
+    padding: 5px 7px;
+    border: 1px solid #d9d9d9;
+    margin: 0 4px;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.Table__pageButton:disabled {
+    cursor: not-allowed;
+    color: gray;
+}
+
+.Table__pageButton--active {
+    color: #1DA57A;
+    border: 1px solid #1DA57A;
+    outline: none;
+}
